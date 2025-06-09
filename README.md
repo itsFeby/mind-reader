@@ -15,7 +15,7 @@ The program "reads your mind". ( ͡° ͜ʖ ͡°)
 ## 🎮 How to Run
 
 ```bash
-g++ -o mind_reader mind_reader.cpp
+g++ -o mind-reader mind-reader.cpp
 ./a.out
 ```
 or if you using clang (like me ദ്ദി ᗜˬᗜ✧):
