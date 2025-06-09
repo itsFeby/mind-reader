@@ -1,5 +1,5 @@
 
-# 🧠 Mind Reader (but like... not really)
+# 🧠 Mind Reader C++ (not really)
 
 > I don't know why I made this, out of boredom I guess ¯\_(ツ)_/¯
 
