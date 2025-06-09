@@ -20,7 +20,8 @@ g++ -o mind_reader mind_reader.cpp
 ```
 or if you using clang (like me ദ്ദി ᗜˬᗜ✧):
 
-```clang++ -std=c++20 -o mind-reader mind-reader.cpp
+```bash
+clang++ -std=c++20 -o mind-reader mind-reader.cpp
 ./mind-reader
 ```
 
