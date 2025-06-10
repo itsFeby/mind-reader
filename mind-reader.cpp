@@ -1,7 +1,13 @@
 #include <ctime>
 #include <iostream>
 #include <chrono>
+#include <string>
 #include <thread>
+
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define BLUE    "\033[34m"
 
 void loadingEffect(std::string message, int duration) {
     std::cout << message;
@@ -46,8 +52,8 @@ int main(){
     while (true){
         int number;
         std::cout << "I can read your mind!" << std::endl;
-        std::cout << "====================================================" << std::endl;
-        std::cout << "Think of a number from 1-10, type in it (Don't worry, i won't peek ( ͡° ͜ʖ ͡°)...)" << std::endl;
+        std::cout << RED << "====================================================" << RESET << std::endl;
+        std::cout << "Think of a number from 1-10, type in it (Don't worry, i won't peek" << RED << " ( ͡° ͜ʖ ͡°)" << RESET << "...)" <<std::endl;
         std::cout << "Enter the number: ";
         std::cin >> number;
 
@@ -69,23 +75,23 @@ int main(){
             typeEffect("\nThe number you are thinking of is...");
             typeEffect("✨" + std::to_string(fakeAnswer1) + "✨");
             loadingEffect("", 5);
-            typeEffect("Huh? Was that wrong? ಥ﹏ಥ Eh... the system error... it's not my fault (つ╥﹏╥)つ");
+            typeEffect(std::string("Huh? Was that ") + RED + "wrong?" + RESET + BLUE + " ಥ﹏ಥ" + RESET + " Eh... the system error... it's not my fault " + BLUE + "(つ╥﹏╥)つ" + RESET);
             loadingEffect("", 4);
-            typeEffect("Wait a sec! (,,>﹏<,,) Don't go! I will fix my answer");
-            spinnerEffect(7);
+            typeEffect(std::string("Wait a sec!") + BLUE + " (,,>﹏<,,)" + RESET + " Don't go! I will fix my answer");
+            spinnerEffect(4);
             typeEffect("\nThe number you are thinking of is... ");
             typeEffect("✨" + std::to_string(fakeAnswer2) + "✨");
             loadingEffect("", 7);
-            typeEffect("Huh? Still no? (ó﹏ò｡) wait a sec!");
-            spinnerEffect(7);
+            typeEffect(std::string("Huh? Still ") + RED + "no?" +RESET + BLUE + " (ó﹏ò｡)" + RESET + " wait a sec!");
+            spinnerEffect(4);
             typeEffect("\nThe number you are thinking of is ");
             typeEffect("✨" + std::to_string(number) + "✨");
-            loadingEffect("", 7);
-            typeEffect("Was that right? (,,>﹏<,,) Told you, I'm a mind reader! ( ๑‾̀◡‾́)✨");
-            typeEffect("⎛⎝( ` ᢍ ´ )⎠⎞ᵐᵘʰᵃʰᵃ");
+            loadingEffect("", 5);
+            typeEffect(std::string("Was that ") + GREEN + "right?" + RESET + BLUE + " (,,>﹏<,,)" + RESET + " Told you, I'm a mind reader!" + BLUE + " ( ๑‾̀◡‾́)✨" + RESET);
+            typeEffect(BLUE + std::string("⎛⎝( ` ᢍ ´ )⎠⎞ᵐᵘʰᵃʰᵃ") + RESET);
         }
 
-        std::cout << "====================================================" << std::endl;
+        typeEffect(RED + std::string("====================================================") + RESET);
 
         char playAgain;
         std::cout << "\nDo you want to play again? (y/n): ";
@@ -93,10 +99,10 @@ int main(){
         if (playAgain == 'y' || playAgain == 'Y') {
             continue;
         } else if (playAgain == 'n' || playAgain == 'N') {
-            std::cout << "\nThank you for playing, have a nice day! (˵ •̀ ᴗ - ˵ ) ✧" << std::endl;
+            std::cout << "\nThank you for playing, have a nice day!" << BLUE << " (˵ •̀ ᴗ - ˵ ) ✧" << RESET << std::endl;
             return 0;
         } else {
-            std::cout << "I said y or n, bro (｡•̀ ⤙ •́ ｡ꐦ) !!! try again!" << std::endl;
+            std::cout << "I said y or n, bro" << RED << "(｡•̀ ⤙ •́ ｡ꐦ)" << RESET << " !!! try again!" << std::endl;
         }
     }
 
