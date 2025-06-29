@@ -9,6 +9,30 @@
 #define GREEN   "\033[32m"
 #define BLUE    "\033[34m"
 
+int getInput(){
+    int number;
+    bool valid = false;
+
+    while (!valid) {
+        std::cout << "I can read your mind!" << std::endl;
+        std::cout << RED << "====================================================" << RESET << std::endl;
+        std::cout << "Think of a number from 1-10, type in it (Don't worry, i won't peek" << RED << " ( ͡° ͜ʖ ͡°)" << RESET << "...)" <<std::endl;
+        std::cout << "Enter the number: ";
+
+        std::cin >> number;
+
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << RED << "\nI said a number from 1-10, idiot!" << RESET << std::endl;
+        } else {
+            valid = true;
+        }
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    return number;
+}
+
 void loadingEffect(std::string message, int duration) {
     std::cout << message;
     for (int i = 0; i < duration; ++i) {
@@ -48,28 +72,17 @@ int generateDifferentNumber(int exclude1, int exclude2 = -1) {
 }
 
 int main(){
+    system("clear"); // Linux/Mac
+    // or system("CLS"); // Windows
     srand(time(0));
     while (true){
-        int number;
-        std::cout << "I can read your mind!" << std::endl;
-        std::cout << RED << "====================================================" << RESET << std::endl;
-        std::cout << "Think of a number from 1-10, type in it (Don't worry, i won't peek" << RED << " ( ͡° ͜ʖ ͡°)" << RESET << "...)" <<std::endl;
-        std::cout << "Enter the number: ";
-        std::cin >> number;
+        int num{getInput()};
 
-        if (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "That's not even a number, dumbass (  •̀⤙•́  )\n";
-            continue;
-        }
-
-
-        if (number > 10 or number <1){
+        if (num > 10 || num <1){
             std::cout << "\nI said a number from 1-10, idiot!" << std::endl;
         } else {
-            int fakeAnswer1 = generateDifferentNumber(number);
-            int fakeAnswer2 = generateDifferentNumber(number, fakeAnswer1);
+            int fakeAnswer1 = generateDifferentNumber(num);
+            int fakeAnswer2 = generateDifferentNumber(num, fakeAnswer1);
             std::cout << "I'm reading your mind...";
             spinnerEffect(7);
             typeEffect("\nThe number you are thinking of is...");
@@ -85,7 +98,7 @@ int main(){
             typeEffect(std::string("Huh? Still ") + RED + "no?" +RESET + BLUE + " (ó﹏ò｡)" + RESET + " wait a sec!");
             spinnerEffect(4);
             typeEffect("\nThe number you are thinking of is ");
-            typeEffect("✨" + std::to_string(number) + "✨");
+            typeEffect("✨" + std::to_string(num) + "✨");
             loadingEffect("", 5);
             typeEffect(std::string("Was that ") + GREEN + "right?" + RESET + BLUE + " (,,>﹏<,,)" + RESET + " Told you, I'm a mind reader!" + BLUE + " ( ๑‾̀◡‾́)✨" + RESET);
             typeEffect(BLUE + std::string("⎛⎝( ` ᢍ ´ )⎠⎞ᵐᵘʰᵃʰᵃ") + RESET);
@@ -98,7 +111,7 @@ int main(){
             std::cout << "\nDo you want to play again? (y/n): ";
             std::cin >> playAgain;
             if (playAgain == 'y' || playAgain == 'Y') {
-                continue;
+                break;
             } else if (playAgain == 'n' || playAgain == 'N') {
                 std::cout << "\nThank you for playing, have a nice day!" << BLUE << " (˵ •̀ ᴗ - ˵ ) ✧" << RESET << std::endl;
                 return 0;
