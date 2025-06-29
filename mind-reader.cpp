@@ -94,15 +94,17 @@ int main(){
         typeEffect(RED + std::string("====================================================") + RESET);
 
         char playAgain;
-        std::cout << "\nDo you want to play again? (y/n): ";
-        std::cin >> playAgain;
-        if (playAgain == 'y' || playAgain == 'Y') {
-            continue;
-        } else if (playAgain == 'n' || playAgain == 'N') {
-            std::cout << "\nThank you for playing, have a nice day!" << BLUE << " (˵ •̀ ᴗ - ˵ ) ✧" << RESET << std::endl;
-            return 0;
-        } else {
-            std::cout << "I said y or n, bro" << RED << "(｡•̀ ⤙ •́ ｡ꐦ)" << RESET << " !!! try again!" << std::endl;
+        while (true) {
+            std::cout << "\nDo you want to play again? (y/n): ";
+            std::cin >> playAgain;
+            if (playAgain == 'y' || playAgain == 'Y') {
+                continue;
+            } else if (playAgain == 'n' || playAgain == 'N') {
+                std::cout << "\nThank you for playing, have a nice day!" << BLUE << " (˵ •̀ ᴗ - ˵ ) ✧" << RESET << std::endl;
+                return 0;
+            } else {
+                std::cout << "I said y or n, bro" << RED << "(｡•̀ ⤙ •́ ｡ꐦ)" << RESET << " !!! try again!" << std::endl;
+            }
         }
     }
 
