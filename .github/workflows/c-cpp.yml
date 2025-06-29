@@ -19,6 +19,8 @@ jobs:
         sudo apt update
         sudo apt install -y build-essential autoconf automake libtool
 
+    - name: Generate configure script
+      run: autoreconf -i
     - name: Run configure script
       run: ./configure
 
