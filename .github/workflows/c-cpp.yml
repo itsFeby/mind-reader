@@ -1,0 +1,32 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up dependencies (autotools, make, gcc/g++)
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential autoconf automake libtool
+
+    - name: Run configure script
+      run: ./configure
+
+    - name: Build the project
+      run: make
+
+    - name: Run tests (make check)
+      run: make check
+
+    - name: Verify source distribution (make distcheck)
+      run: make distcheck
